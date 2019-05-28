@@ -1,0 +1,36 @@
+I. Do wskaźnika wsk zapisano adres w pamięci początku obiektu obj.
+
+II. Przypisywanie wartości do obiektu pokazywanego wskaźnikiem. (program)
+
+III. unsigned long * a, b;
+*a - a jest wskaźnikiem pokazującym na obiekt typu unsigned long
+b - jest obiektem typu unsigned long
+
+IV. Które mogą być pokazywane wskaźnikami:
+a) zwykły obiekt - może
+b) tablica obiektów - może
+c) wskaźnik - może
+d) referencja - ?
+e) nazwa - ?
+f) funkcja - nie może
+g) komórka pamięci komputera - może
+h) bit w komórce pamięci - ?
+
+V. Wskaźnik typu char nie nadaje się do pokazywania na obiekt typu double.
+
+VI. Wyrażenie jest l-wartością (l-value) gdy może występować również po lewej stronie znaku = (nie tylko po prawej).
+
+VII. L-value jest równocześnie R-value. Ale nie odwrotnie.
+
+VIII. Które to l-value?
+wsk - l-value
+*wsk - l-value
+&wsk - r-value
+
+IX. Zdefiniuj (program)
+
+X. Ustaw wskaźnik na adres (program)
+
+XI. Read the value from the pointer (program from X)
+
+XII. Wskaźnik typu void* może być ustawiony na dowolny typ, bez specyfikowania dokładnie, nawet jeśli go nie znamy.
