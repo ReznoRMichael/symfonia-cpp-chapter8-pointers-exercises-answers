@@ -34,3 +34,57 @@ X. Ustaw wskaźnik na adres (program)
 XI. Read the value from the pointer (program from X)
 
 XII. Wskaźnik typu void* może być ustawiony na dowolny typ, bez specyfikowania dokładnie, nawet jeśli go nie znamy.
+
+XIII. Ustaw wskaźnik void* na obiekt (program)
+
+XIV. Ustaw wskaźnik na tablicę znaków + wypisywanie na ekran (program)
+
+XV. Przesunięcie wskaźnika o X elementów dalej można wykonać prostą instrukcją wskaznik+X. Można w ten sposób przesunąć wskaźnik nawet o większą ilość elementów niż zawiera tablica (niebezpieczne).
+
+XVI. Kompilator nie sprawdza poprawności przesuwania wskaźników na nieistniejące elementy tablic. Taki błąd może się objawić nawet dopiero wtedy, kiedy zaczniemy korzystać z danych, które siedzą w tym konkretnym miejscu w pamięci.
+
+XVII. Instrukcje przesuwające oba wskaźniki o 4 elementy tablicy dalej. (program)
+
+XVIII. Uzyskiwanie adresu początku tablicy - można tak zrobić za pomocą ustawienia wskaźnika na początek tablicy, i odczytanie jego adresu za pomocą &wskT.
+
+XIX. Nazwa tablicy od wskaźnika ustawionego na jej zerowy element, różnice:
+- nazwa tablicy to stały wskaźnik do jej zerowego obiektu - nie można go zmienić
+- wskaźnik jest obiektem - dlatego da się ustalić jego adres. Nazwa tablicy nie jest obiektem, więc nie można ustalić jej adresu.
+
+XX. odejmowanie wskaźników (program)
+wskB - wskA = 30
+wskA - wskB = -30
+
+XXI. dwa wskaźniki ustawione na tą samą tablicę:
+a) dodawanie - tak
+b) dodawanie liczby całkowitej do wskaźnika - tak
+c) odejmowanie - tak
+d) odejmowanie liczby całkowitej od wskaźnika - tak
+e) mnożenie - nie
+f) mnożenie wskaźnika przez liczbę całkowitą - nie
+g) dzielenie - nie
+h) dzielenie wskaźnika przez liczbę całkowitą - nie
+
+XXII. dwa wskaźniki ustawione na tą samą tablicę:
+== - porównywanie wskaźników (oba pokazują na to samo/ten sam obiekt)
+!= - oba wskaźniki pokazują na różne obiekty
+< - wskaźnik pokazuje na element tablicy o mniejszym indeksie
+> - wskaźnik pokazuje na element tablicy o większym indeksie
+<= - wskaźnik pokazuje na element tablicy o mniejszym lub tym samym indeksie
+>= - wskaźnik pokazuje na element tablicy o większym lub tym samym indeksie
+
+XXIII. Wskaźniki pokazujące na zupełnie różne obiekty. Wykonując na nich operacji porównania, dowiadujemy się w ten sposób, jak w pamięci komputera ulokowane są względem siebie te obiekty.
+
+XXIV. Niezainicjowane wskaźniki pokazują na:
+a) wskaźnik będący lokalnym obiektem automatycznym - ?
+b) wskaźnik będący lokalnym obiektem statycznym - zero/null/0
+c) wskaźnik będącym obiektem globalnym - ?
+d) wskaźnik z przestrzeni nazw (namespace) - ?
+
+XXV. Cel Ustawiania wskaźnika na adres 0 - często służy nam by zaznaczyć, że wskaźnik nie pokazuje na nic sensownego.
+
+XXVI. Najkrótsze sprawdzenie if-em czy wskaźnik jest ustawiony na adres zerowy: if(!wsk);
+
+XXVII. Najkrótsze sprawdzenie if-em czy wskaźnik jest ustawiony na adres inny niż zerowy: if(wsk);
+
+XXVIII. if(wsk != NULL) - sprawdzenie, czy wskaźnik jest ustawiony na coś innego niż adres zerowy. Inaczej if(wsk);

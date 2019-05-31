@@ -1,6 +1,6 @@
 # Learning C++ - Symfonia C++, Chapter 8 Exercises (Pointers)
 
-> C++ learning handbook by Jerzy Grębosz - "Symfonia C++" (Chapter 8 exercises - Pointers)
+> C++ learning handbook by Jerzy Grębosz - "Symfonia C++" (Chapter 8 - Pointers) - Exercises and answers
 
 ## General info
 
@@ -11,6 +11,10 @@ Learning C++. Doing all exercises and answering all questions from Chapter 8 of 
 * C++
 * Notepad++
 * CodeBlocks
+
+## To do after gaining more knowledge
+
+* 24/XXIV (on what are uninitialized pointers pointing to)
 
 ## Contact
 
