@@ -10,11 +10,11 @@ IV. Które mogą być pokazywane wskaźnikami:
 a) zwykły obiekt - może
 b) tablica obiektów - może
 c) wskaźnik - może
-d) referencja - ?
-e) nazwa - ?
+d) referencja - nie może (przezwisko, nie jest obiektem)
+e) nazwa - nie może (nazwa nie jest obiektem)
 f) funkcja - nie może
 g) komórka pamięci komputera - może
-h) bit w komórce pamięci - ?
+h) bit w komórce pamięci - nie może
 
 V. Wskaźnik typu char nie nadaje się do pokazywania na obiekt typu double.
 
@@ -88,3 +88,7 @@ XXVI. Najkrótsze sprawdzenie if-em czy wskaźnik jest ustawiony na adres zerowy
 XXVII. Najkrótsze sprawdzenie if-em czy wskaźnik jest ustawiony na adres inny niż zerowy: if(wsk);
 
 XXVIII. if(wsk != NULL) - sprawdzenie, czy wskaźnik jest ustawiony na coś innego niż adres zerowy. Inaczej if(wsk);
+
+XXIX. Funkcja zerowanie (program)
+
+XXX. Funkcja dodająca 44 do każdego elementu tablicy (program) (3 versions - array, pointer and pointer-array)
