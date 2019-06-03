@@ -2,9 +2,12 @@
 
 using namespace std;
 
-int arrayInt[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-int arrayIntP1[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-int arrayIntP2[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+// const object can be used to allocate arrays
+const int asize = 10;
+
+int arrayInt[asize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+int arrayIntP1[asize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+int arrayIntP2[asize] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 /* ----------------------------- */
 void add44_array(int[], int);
@@ -16,22 +19,22 @@ void add44_pointer_v2(int*, int);
 
 int main()
 {
-    add44_array( arrayInt, 10 );
+    add44_array( arrayInt, asize );
 
     cout << endl << "arrayInt: ";
-    for(int i=0; i < 10; i++)
+    for(int i=0; i < asize; i++)
         cout << arrayInt[i] << ",";
 
-    add44_pointer_v1( arrayIntP1, 10 );
+    add44_pointer_v1( arrayIntP1, asize );
 
     cout << endl << "arrayIntP1: ";
-    for(int i=0; i < 10; i++)
+    for(int i=0; i < asize; i++)
         cout << arrayIntP1[i] << ",";
 
-    add44_pointer_v2( arrayIntP2, 10 );
+    add44_pointer_v2( arrayIntP2, asize );
 
     cout << endl << "arrayIntP2: ";
-    for(int i=0; i < 10; i++)
+    for(int i=0; i < asize; i++)
         cout << arrayIntP2[i] << ",";
 
     return 0;
