@@ -76,7 +76,7 @@ XXII. dwa wskaźniki ustawione na tą samą tablicę:
 XXIII. Wskaźniki pokazujące na zupełnie różne obiekty. Wykonując na nich operacji porównania, dowiadujemy się w ten sposób, jak w pamięci komputera ulokowane są względem siebie te obiekty.
 
 XXIV. Niezainicjowane wskaźniki pokazują na:
-a) wskaźnik będący lokalnym obiektem automatycznym - ?
+a) wskaźnik będący lokalnym obiektem automatycznym - śmieci
 b) wskaźnik będący lokalnym obiektem statycznym - zero/null/0
 c) wskaźnik będącym obiektem globalnym - ?
 d) wskaźnik z przestrzeni nazw (namespace) - ?
@@ -99,3 +99,30 @@ XXXII. Tworzenie operatorem new obiektu typu wbudowanego (takiego w który języ
 Zawiera wstępnie śmieci. Pod tym względem bardziej przypomina obiekt automatyczny (gdyż obiekty globalne wstępnie inicjalizowane są zerami).
 
 XXXIII. Tworzenie operatorem new elementów 3 tablic + funkcja wykonująca operację mnożenia i wstawiania do tablic (program).
+
+XXXIV. Modyfikacja programu z ćw. 33 - funkcja kreator_tablicy() - tworzenie dynamiczne tablicy. (program)
+
+XXXV. Jaka różnica:
+int *wsk1 = new int[10]; -> tworzenie nowej tablicy 10 obiektów int
+int *wsk2 = new int(10); -> tworzenie nowego obiektu int oraz zainicjalizowanie go wartością 10
+
+XXXVI. Operatory new oraz new[] to dwa odrębne operatory.
+Instrukcje kasujące dla tych operatorów wyglądają następująco: 
+delete
+oraz
+delete[]
+
+XXXVII. Umiejscawiający operator new (dla zaawansowanych) - go back later
+
+XXXVIII. Obiekt stworzony przy pomocy instrukcji 'new':
+double *wsk = new double;
+Nie ma nazwy. Ale można się odnieść do jego adresu przy pomocy wskaźnika wsk.
+
+XXXIX. 3 sposoby powiadamiania o niemożliwości stworzenia nowego obiektu na skutek wyczerpania pamięci:
+1. zwrot adresu zero - sposób "dawny"
+2. rzucenie wyjątku 'bad_alloc' - sposób "nowoczesny" (try...catch) std::bad_alloc
+3. wywołanie jakiejś naszej funkcji
+
+XL. Różnica między wskaźnikiem stałym, a wskaźnikiem do obiektu stałego: 
+Wskaźnik stały - nieruchomy, zamrożony, ustawia się go raz, nie można go już zmienić (int *const wsk = &obiekt)
+Wskaźnik do obiektu stałego - wskaźnik, który traktuje pokazywany obiekt jako coś, czego nie można zmieniać (traktuje go jak obiekt stały)

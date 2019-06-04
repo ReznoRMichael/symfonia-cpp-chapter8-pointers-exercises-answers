@@ -15,6 +15,7 @@ Learning C++. Doing all exercises and answering all questions from Chapter 8 of 
 ## To do after gaining more knowledge
 
 * 24/XXIV (on what are uninitialized pointers pointing to)
+* 37/XXXVII (new operator - advanced knowledge)
 
 ## Contact
 
