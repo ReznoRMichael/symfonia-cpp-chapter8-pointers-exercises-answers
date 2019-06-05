@@ -12,7 +12,7 @@ b) tablica obiektów - może
 c) wskaźnik - może
 d) referencja - nie może (przezwisko, nie jest obiektem)
 e) nazwa - nie może (nazwa nie jest obiektem)
-f) funkcja - nie może
+f) funkcja - może (nazwa funkcji to także jej adres)
 g) komórka pamięci komputera - może
 h) bit w komórce pamięci - nie może
 
@@ -77,8 +77,8 @@ XXIII. Wskaźniki pokazujące na zupełnie różne obiekty. Wykonując na nich o
 
 XXIV. Niezainicjowane wskaźniki pokazują na:
 a) wskaźnik będący lokalnym obiektem automatycznym - śmieci
-b) wskaźnik będący lokalnym obiektem statycznym - zero/null/0
-c) wskaźnik będącym obiektem globalnym - ?
+b) wskaźnik będący lokalnym obiektem statycznym - adres zero/null/0
+c) wskaźnik będącym obiektem globalnym - adres zero/null/0
 d) wskaźnik z przestrzeni nazw (namespace) - ?
 
 XXV. Cel Ustawiania wskaźnika na adres 0 - często służy nam by zaznaczyć, że wskaźnik nie pokazuje na nic sensownego.
@@ -126,3 +126,28 @@ XXXIX. 3 sposoby powiadamiania o niemożliwości stworzenia nowego obiektu na sk
 XL. Różnica między wskaźnikiem stałym, a wskaźnikiem do obiektu stałego: 
 Wskaźnik stały - nieruchomy, zamrożony, ustawia się go raz, nie można go już zmienić (int *const wsk = &obiekt)
 Wskaźnik do obiektu stałego - wskaźnik, który traktuje pokazywany obiekt jako coś, czego nie można zmieniać (traktuje go jak obiekt stały)
+
+XLI. Czy może istnieć wskaźnik stały do obiektu stałego? Może. Np. const double *const p 
+
+XLII. Do wskaźnika stałego można wpisać adres wyłącznie w momencie inicjalizacji. Później nie jest to możliwe.
+
+XLIII. Które z instrukcji kompilator odrzuci i dlaczego?
+int *const wa = new int;
+const int *wb = new int(8);
+int m = 4;
+
+a) wa = 10; error: assignment of read-only variable 'wa' / error: invalid conversion from 'int' to 'int*' [-fpermissive] (nie można zmieniać adresu stałego wskaźnika + nie użyto reinterpret_cast)
+b) wb = 10; error: invalid conversion from 'int' to 'const int*' [-fpermissive] (nie użyto reinterpret_cast)
+c) *wa = 10; // przypisz wartość adresowi wskaźnika (wartość stałego wskaźnika można przypisać po inicjalizacji, nie można tylko zmieniać adresu)
+d) *wb = 10; error: assignment of read-only location '* wb' (to jest obiekt stały, więc nie można przypisać mu innej wartości niż początkowa 8)
+e) wa = &m; error: assignment of read-only variable 'wa' (nie można zmieniać adresu stałego wskaźnika)
+f) wb = &m; // można zmieniać adres normalnego wskaźnika do obiektów const
+g) delete wa; // można usunąć
+h) delete wb; // można usunąć
+
+XLIV. Wyjaśnij co powodują oba fragmenty.
+a) int *wsk; -> zdefiniowanie wskaźnika do obiektów int
+*wsk = 0; -> przypisanie wskaźnikowi wartości 0 bez ustawiania wcześniej na adres // warning: 'wsk' is used uninitialized in this function [-Wuninitialized]
+b) int *wsk = 0; -> definicja wskaźnika do obiektów int i wpisanie wartości 0 bez ustawiania na adres // warning: unused variable 'wsk' [-Wunused-variable]
+
+XLV. const char *wsk = "Napis"; -> ustawienie wskaźnika na ciąg znaków (stałą dosłowną typu C-string). Nie jest to kopia, ale ustawienie na adres tego miejsca w pamięci, gdzie ten C-string powstał.
