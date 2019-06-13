@@ -151,3 +151,30 @@ a) int *wsk; -> zdefiniowanie wskaźnika do obiektów int
 b) int *wsk = 0; -> definicja wskaźnika do obiektów int i wpisanie wartości 0 bez ustawiania na adres // warning: unused variable 'wsk' [-Wunused-variable]
 
 XLV. const char *wsk = "Napis"; -> ustawienie wskaźnika na ciąg znaków (stałą dosłowną typu C-string). Nie jest to kopia, ale ustawienie na adres tego miejsca w pamięci, gdzie ten C-string powstał.
+
+XLVI. Które z instrukcji komplitor odrzuci, i dlaczego? Które z przepisań można przeprowadzić dzięki operacji rzutowania, a które są niemożliwe nawet za pomocą rzutowania?
+int obiekt = 100; // zwykły obiekt
+int *intw; // wskaźnik do zwykłych obiektów int
+const int *Cintw; // wskaźnik do stałych obiektów int
+int *const intCw = &obiekt; // stały wskaźnik do obiektów int
+const int *const CintCw = &obiekt; // stały wskaźnik do stałych obiektów int
+
+a)	intw = Cintw; // error: invalid conversion from 'const int*' to 'int*' [-fpermissive] (wskaźnik do zmiennych nie może się zmienić we wskaźnik do stałych)
+	intw = const_cast<int *>(Cintw); // rzutowanie jest możliwe
+b) 	intw = intCw; // możliwe - wskaźnik do zmiennej może pokazywać na to samo, co stały wskaźnik
+c) 	intw = CintCw; // error: invalid conversion from 'const int*' to 'int*' [-fpermissive] (wskaźnik do zmiennych nie może się zmienić we wskaźnik do stałych)
+	intw = const_cast<int *>(CintCw); // rzutowanie jest możliwe
+d) 	Cintw = intw; // możliwe - wskaźnik do stałej może pokazywać na to samo, co zwykły wskaźnik
+e) 	Cintw = intCw; // możliwe - wskaźnik do stałej może pokazywać na to samo, co stały wskaźnik
+f) 	Cintw = CintCw; // możliwe - wskaźnik do stałej może pokazywać na to samo, co stały wskaźnik do stałej
+g) 	CintCw = intw; // error: assignment of read-only variable 'CintCw' (stałego wskaźnika nie można przestawiać na nic innego)
+	CintCw = const_cast<const int *const>(intw); // rzutowanie nie jest możliwe (stałego wskaźnika nie można przestawiać na nic innego)
+h) 	CintCw = Cintw; // error: assignment of read-only variable 'CintCw' (stałego wskaźnika nie można przestawiać na nic innego)
+	CintCw = const_cast<const int *const>(Cintw); // rzutowanie nie jest możliwe (stałego wskaźnika nie można przestawiać na nic innego)
+i) 	CintCw = intCw; // error: assignment of read-only variable 'CintCw' (stałego wskaźnika nie można przestawiać na nic innego)
+	CintCw = const_cast<const int *const>(intCw); // rzutowanie nie jest możliwe (stałego wskaźnika nie można przestawiać na nic innego)
+	
+XLVII. Definicja 100-elementowej tablicy wskaźników do obiektów typu unsigned char.
+unsigned char *tabwsk[100];
+lub alternatywnie
+unsigned char *(tabwsk[100]);
