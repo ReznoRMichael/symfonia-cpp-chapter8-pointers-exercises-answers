@@ -186,4 +186,15 @@ IL. Deklaracja funkcji przyjmująca dwa argumenty - C-string i wskaźnik do tabl
 L. Funkcja, która do początku treści tablicy znaków dopisze tekst "UWAGA: ". (program)
 
 LI. Przeczytaj deklaracje (wskaźniki do funkcji):
-void (*w)(void); — 
+void (*w)(void); — w jest wskaźnikiem do funkcji wywoływanej argumentem nieznanego typu oraz nie zwracającej żadnej wartości
+void * (*w)(void*); — w jest wskaźnikiem do funkcji wywoływanej argumentem typu wskaźnik do nieznanego typu oraz zwracającej wskaźnik do nieznanego typu
+int (*w)(int, double, char*); — w jest wskaźkiem do funkcji wywoływanej trzema argumentami: typu int, typu double oraz wskaźnikiem do obiektów typu char oraz zwracającej wartość typu int
+double (*w)(int, double, char*); — w jest wskaźnikiem do funkcji wywoływanej trzema argumentami: typu int, double oraz wskaźnikiem do obiektów typu char oraz zwracającej wartość typu double
+
+LII. Deklaracja wskaźnika, który może pokazywać na funkcję wywoływaną z argumentem typu wskaźnik do tablicy znakowej, a zwracającą rezultat typu wskaźnik void.
+void * (*w)(char*);
+
+LIII. Deklaracja funkcji, która otrzymuje dwa argumenty a zwraca rezultat typu bool. Argumenty funkcji:
+1. wskaźnik do funkcji wywoływanej z dwoma argumentami typu double, zwracającej rezultat typu bool.
+2. wskaźnik do funkcji wywoływanej z jednym argumentem typu double, a zwracającej rezultat typu char.
+bool funkcja( bool (*w)(double, double), char (*w)(double) )
