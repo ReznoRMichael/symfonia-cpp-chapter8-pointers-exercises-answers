@@ -184,3 +184,6 @@ XLVIII. Funkcja rezerwująca 10-elementową tablicę i przekazująca adres wska�
 IL. Deklaracja funkcji przyjmująca dwa argumenty - C-string i wskaźnik do tablicy wskaźników do obiektów typu double. Zwraca wskaźnik do typu void. (program)
 
 L. Funkcja, która do początku treści tablicy znaków dopisze tekst "UWAGA: ". (program)
+
+LI. Przeczytaj deklaracje (wskaźniki do funkcji):
+void (*w)(void); — 

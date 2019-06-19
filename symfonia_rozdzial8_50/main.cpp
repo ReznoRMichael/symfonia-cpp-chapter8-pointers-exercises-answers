@@ -2,10 +2,13 @@
 
 using namespace std;
 
+// set both array sizes
 const int tsize = 37;
 
+// original array with the text into which the prefix should be added
 char text[tsize] = { "To this text I want to add a prefix." };
 
+// function for adding a prefix to a given array
 /* -------------------------------- */
 char * prefixer(char *, const int);
 /* -------------------------------- */
@@ -32,38 +35,60 @@ int main()
 /* -------------------------------- */
 char * prefixer(char * tab, const int s)
 {
-    char * beginning = tab; // temp pointer for remembering the beginning address
-    char * wsktemp = tab;
+    // duplicate array of the same size with the prefix message
     char warning[s] = { "Warning: " };
+
+    // helper pointers for remembering the beginning addresses of both arrays
+    char * beginning = tab;
+    char * wbeginning = warning;
+
+    // main pointers to work on
+    char * wsktemp = tab;
     char * warningwsk = warning;
-    char * wbeginning = warning; // temp pointer for remembering the beginning address
+
+    // array size helper and character counter
     int tsize = s;
+    int wcounter = 1;
 
-    while(*(warningwsk++)); // move the pointer to the end of the string
-    warningwsk--; // move pointer one character back
+    // move the pointer to the end of the prefix string and count the number of characters
+    while(*(warningwsk++)) wcounter++;
+    // move pointer one character back
+    warningwsk--;
 
-    // copy one string to another
-    while( (*(warningwsk++) = *(wsktemp++)) )
+//    cout << "wcounter: " << wcounter << endl;
+//    cout << "tsize: " << tsize << endl;
+//    cout << "tsize-wcounter: " << tsize-wcounter << endl;
+
+    for(int i=tsize-wcounter; i>=0; i--)
     {
-        tsize--;
-        if(tsize < 10)
+        // copy one array to another
+        *warningwsk = *wsktemp;
+
+        // to the last 4 indexes of the array add dots
+        if(i <= 3)
         {
-            for(int i=0; i < 3; i++)
-            {
-                *warningwsk = '.';
-                warningwsk++;
-            }
-            warningwsk = 0;
-            wsktemp = 0;
-            break;
+            *warningwsk = '.';
         }
+
+        // add a null character at the end of the string instead of the 4th dot
+        if(i == 0) *warningwsk = 0;
+
+        // increment both pointers for the next loop
+        warningwsk++;
+        wsktemp++;
     }
+
+    // set the pointers again on the beginning addresses thanks to above helpers
     warningwsk = wbeginning;
     wsktemp = beginning;
 
+    // copy the new array with the prefix back to the original one
     while( (*(wsktemp++) = *(warningwsk++)) );
+
+    // set the original array pointer address again on the beginning
     wsktemp = beginning;
 
+    // return the address of the updated array
     return wsktemp;
 }
 /* -------------------------------- */
