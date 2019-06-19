@@ -197,4 +197,29 @@ void * (*w)(char*);
 LIII. Deklaracja funkcji, która otrzymuje dwa argumenty a zwraca rezultat typu bool. Argumenty funkcji:
 1. wskaźnik do funkcji wywoływanej z dwoma argumentami typu double, zwracającej rezultat typu bool.
 2. wskaźnik do funkcji wywoływanej z jednym argumentem typu double, a zwracającej rezultat typu char.
-bool funkcja( bool (*w)(double, double), char (*w)(double) )
+bool funkcja( bool (*w1)(double, double), char (*w2)(double) )
+
+LIV. Program z trzema funkcjami i jedną funkcją ze wskaźnikiem, która ma zwrócić rezultat jednej z trzech funkcji. (program)
+
+LV. Definicja wskaźnika mogącego pokazywać na poprzednią funkcję F (program) - int (*wsk)( int() ) = &F;
+
+LVI. Wskaźnikiem typu (double *) nie można pokazywać na funkcję double * f(). Definicja wskaźnika do funkcji musi dokładnie odpowiadać definicji funkcji.
+
+LVII. Operator wywołania funkcji to () za nazwą funkcji. Np. funkcja().
+
+LVIII. Czytając deklarację wskaźnika do funkcji przesuwamy się najpierw w prawo, gdyż po prawej stronie mogą stać tylko operatory () i [], a są one najsilniejsze z możliwych w C++.
+
+LIX. Na funkcję z argumentem domniemanym
+void f(int m=4);
+nie można pokazać wskaźnikiem
+void (*w)();
+Musiałby to być wskaźnik
+void (*w)(int);
+
+LX. Na wskaźnikach do funkcji nie można przeprowadzać operacji arytmetycznych.
+
+LXI. Do wskaźnika do funkcji wolno przypisać zero.
+
+LXII. Argument formalny (wywołania) funkcji będący wskaźnikiem do innej funkcji może mieć wartość domniemaną (można go od razu ustawić na adres jakiejś funkcji znanej powyżej w programie).
+
+LXIII. Program imitujący pracę robota przemysłowego, 6 funkcji. (program)
